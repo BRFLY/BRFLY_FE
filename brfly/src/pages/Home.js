@@ -1,13 +1,12 @@
 import styled from "styled-components";
 import Navbar from "../components/Navbar";
 import KakaoLogin from "../components/KakaoLogin";
+import main from "../assets/images/main.svg";
 
 const Home = () => {
   return (
     <>
-      <Navbar />
       <Body>
-        <Title>Near by</Title>
         <KakaoLogin />
       </Body>
     </>
@@ -15,22 +14,18 @@ const Home = () => {
 };
 export default Home;
 
-const Title = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 200px;
-`;
-
 const Body = styled.div`
+  background: url(${main}) no-repeat center;
+  background-size: cover;
   height: 100vh;
+  margin: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
   div {
-    display: "inline-block";
+    display: inline-block;
   }
   h1 {
     color: white;

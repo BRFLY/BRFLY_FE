@@ -59,6 +59,7 @@ export default KakaoLogin;
 
 const Img = styled.img`
   cursor: pointer;
+  margin-top: 500px;
 `;
 
 const Container = styled.div`
