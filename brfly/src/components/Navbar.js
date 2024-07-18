@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-import react from "react";
-
-const Navbar = () => {};
-=======
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
@@ -17,6 +12,5 @@ const Navbar = () => {
     </>
   );
 };
->>>>>>> 6d06a6703a8184f3f2541e65197ff75be37f6d98
 
 export default Navbar;
