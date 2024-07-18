@@ -3,20 +3,29 @@ import styled from "styled-components";
 
 const Memo = () => {
   const [inputValue, setInputValue] = useState("");
-  const [message, setMessage] = useState("");
+  const [messages, setMessages] = useState([]);
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
   };
 
   const handleButtonClick = () => {
-    setMessage(inputValue);
-    setInputValue(""); // 입력 필드를 비웁니다.
+    if (inputValue.trim() !== "") {
+      setMessages([...messages, inputValue]);
+      setInputValue(""); // 입력 필드를 비웁니다.
+    }
   };
 
   return (
     <Body>
-      <Msg>{message}</Msg>
+      <Msg>
+        {messages.map((msg, index) => (
+          <Message key={index}>
+            <Circle />
+            {msg}
+          </Message>
+        ))}
+      </Msg>
       <InputWrapper>
         <Input
           placeholder="기사를 요약해서 정리해보세요"
@@ -44,10 +53,8 @@ const Body = styled.div`
 const InputWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  max-height: 300px;
   align-items: center;
   border-top: 1px solid #ccc;
-  overflow-y: auto; /* 메시지가 넘칠 경우 스크롤 가능하게 설정 */
 `;
 
 const Input = styled.input`
@@ -64,12 +71,27 @@ const Msg = styled.div`
   border: 1px solid #ccc;
   padding: 10px;
   margin-bottom: 20px;
+  overflow-y: auto; /* 메시지가 넘칠 경우 스크롤 가능하게 설정 */
+`;
+
+const Message = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+`;
+
+const Circle = styled.div`
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: black;
+  margin-right: 10px;
 `;
 
 const InputBtn = styled.button`
   width: 80px;
-  height: 30px;
-  padding: 20px;
+  height: 60px;
+  padding: 0 20px;
   font-size: 15px;
   border: none;
   display: flex;
